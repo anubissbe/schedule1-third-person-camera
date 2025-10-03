@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//c/Users/bertc/OneDrive/Documenten/Projects/shedule1mod/**)"
-    ],
-    "deny": [],
-    "ask": []
-  }
-}
