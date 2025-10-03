@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <VersionPrefix>0.1.0</VersionPrefix>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="HarmonyX" Version="2.14.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\..\lib\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2Cppmscorlib">
+            <HintPath>..\..\lib\Il2Cppmscorlib.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\..\lib\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath>..\..\lib\UnityEngine.PhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.InputLegacyModule">
+            <HintPath>..\..\lib\UnityEngine.InputLegacyModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(Configuration) == 'Debug'">
+        <ProjectReference Include="..\ScheduleOneMods.Logging\ScheduleOneMods.Logging.csproj" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(Configuration) == 'Release'">
+        <Compile Include="..\ScheduleOneMods.Logging\Log.cs">
+            <Link>Log.cs</Link>
+        </Compile>
+    </ItemGroup>
+
+    <Target Name="SetModInfo" BeforeTargets="GetAssemblyAttributes">
+        <ItemGroup>
+            <AssemblyAttribute Include="MelonLoader.MelonInfoAttribute">
+                <_Parameter1>typeof(ScheduleOneMods.ThirdPersonCamera.Mod)</_Parameter1>
+                <_Parameter1_IsLiteral>true</_Parameter1_IsLiteral>
+                <_Parameter2>Third Person Camera</_Parameter2>
+                <_Parameter3>$(InformationalVersion)</_Parameter3>
+                <_Parameter4>anubissbe</_Parameter4>
+            </AssemblyAttribute>
+            <AssemblyAttribute Include="MelonLoader.MelonGameAttribute">
+                <_Parameter1>TVGS</_Parameter1>
+                <_Parameter2>Schedule I</_Parameter2>
+            </AssemblyAttribute>
+        </ItemGroup>
+        <Message Importance="high" Text="----- MelonInfo.Version $(InformationalVersion)"/>
+    </Target>
+
+</Project>
