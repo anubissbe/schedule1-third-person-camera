@@ -70,3 +70,6 @@ desktop.ini
 notes.txt
 todo.txt
 scratch.md
+.claude/
+CLAUDE.md
+CHANGELOG.md
